@@ -6,12 +6,12 @@ app.use(cors());
 app.use(express.json());
 
 let tasks = [
-  { id: 0, tarea: 'trabajo', completado: true },
-  { id: 1, tarea: 'ejercicio', completado: false },
-  { id: 2, tarea: 'tareas', completado: false },
-  { id: 3, tarea: 'leer', completado: true },
-  { id: 4, tarea: 'practicar futbol', completado: false },
-  { id: 5, tarea: 'jugar', completado: false }
+  { id: 0, description: 'trabajo', completado: true },
+  { id: 1, description: 'ejercicio', completado: false },
+  { id: 2, description: 'tareas', completado: false },
+  { id: 3, description: 'leer', completado: true },
+  { id: 4, description: 'practicar futbol', completado: false },
+  { id: 5, description: 'jugar', completado: false }
 ];
 let id = 6;
 
@@ -27,7 +27,7 @@ app.get('/tasks/:id', (req, res) => {
 app.post('/tasks', (req, res) => {
   const newTask = {
     id: id,
-    tarea: req.body.tarea,
+    description: req.body.description,
     completado: req.body.completado
   };
   tasks = [...tasks, newTask];
@@ -43,7 +43,7 @@ app.put('/tasks/:id', (req, res) => {
       if (task.id == req.params.id) {
         let newTask = {
           id: task.id,
-          tarea: req.body.tarea ? req.body.tarea : task.tarea,
+          description: req.body.description ? req.body.description : task.description,
           completado: req.body.completado ? req.body.completado : task.completado
         };
         console.log(newTask);
@@ -65,6 +65,6 @@ app.delete('/tasks/:id', (req, res) => {
 });
 
 // listen for requests
-app.listen(3000, () => {
-  console.log('Server is listening on port 3000');
+app.listen(9000, () => {
+  console.log('Server is listening on port http://localhost:9000');
 });
